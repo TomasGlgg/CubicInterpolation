@@ -18,11 +18,11 @@ from numpy import linspace
 
 from lib import CubicInterpolate
 
-array = [1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 1]
+array = [1, 1, 2, 3, 3, 2, 1, 1, 2, 3, 3, 2, 1, 1]
 plt.plot(array, 'o')
 
 i = CubicInterpolate(array)
-curve_x = linspace(1, len(array) - 2, 100)
+curve_x = linspace(0, len(array) - 1, 100)
 curve_y = []
 for x in curve_x:
     curve_y.append(i.use(x))
