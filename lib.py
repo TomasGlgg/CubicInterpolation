@@ -29,13 +29,13 @@ class LowLevelCubicInterpolate:
 
 class CubicInterpolate:
     def __init__(self, array):
-        self.array = [array[0]] + array + [array[-1]]
+        self.array = array
 
     def use(self, x):
-        assert 0 <= x <= len(self.array) - 1
+        assert 0 <= x < len(self.array) - 1
         if x.is_integer():
-            return self.array[int(x) + 1]
+            return self.array[int(x)]
         point = floor(x)
-        work_array = self.array[point:point + 4]
+        work_array = self.array[point - 1:point + 3]
         interpolator = LowLevelCubicInterpolate(work_array)
         return interpolator.use(x % 1)
